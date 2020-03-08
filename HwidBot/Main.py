@@ -10,7 +10,7 @@ client.remove_command("help")
 url =  "http://localhost:" + str(config["port"])
 
 @client.event
-async def on_ready():
+async def on_connect():
     print(" User: {}".format(client.user))
 
 @client.command("check")
@@ -59,6 +59,9 @@ async def hwids(ctx: commands.Context):
 
           await ctx.send("```\n" + '\n'.join(f.text.split("\n")) + "```")
 
-        
-
-client.run(config["token"])
+if __name__ == "__main__":
+    
+    if config["selfbot"] == True:
+        client.run(config["token"], bot=False, reconnect=True)
+    else:
+        client.run(config["token"], reconnect=True)
