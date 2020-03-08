@@ -44,7 +44,7 @@ async def addHwid(ctx: commands.Context, *, message):
             await ctx.send("`HWID Is not in the database`")
 
 @client.command("removeHwid")
-async def addHwid(ctx: commands.Context, *, message):
+async def removeHwid(ctx: commands.Context, *, message):
     with requests.Session() as req:
         f = req.post(url + f"/api/removeHwid/{message}", headers={"Authorization": "AWdhAOwdiaw3146IUHsd"})
         if f.json()["success"] == True:
